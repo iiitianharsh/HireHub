@@ -56,7 +56,7 @@ export const login = async (req, res) => {
                 success: false
             });
         };
-        let user = await User.findOne({ email });
+        let user = await User.findOne({ email }); 
         if (!user) {
             return res.status(400).json({
                 message: "Incorrect email or password.",
@@ -117,8 +117,8 @@ export const updateProfile = async (req, res) => {
     try {
         const { fullname, email, phoneNumber, bio, skills } = req.body;
         
-        // const file = req.file;
-        // // cloudinary ayega idhar
+         const file = req.file;
+        // cloudinary ayega idhar
         // const fileUri = getDataUri(file);
         // const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
 
@@ -152,7 +152,8 @@ export const updateProfile = async (req, res) => {
 
 
         await user.save();
-
+       
+        // nayav user banaya
         user = {
             _id: user._id,
             fullname: user.fullname,
