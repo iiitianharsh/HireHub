@@ -24,8 +24,10 @@ const JobDescription = () => {
             
             if(res.data.success){
                 setIsApplied(true); // Update the local state
+
+                // is job ke schema me update kar rhe h , and adding this applicant in job ka DB
                 const updatedSingleJob = {...singleJob, applications:[...singleJob.applications,{applicant:user?._id}]}
-                dispatch(setSingleJob(updatedSingleJob)); // helps us to real time UI update
+                dispatch(setSingleJob(updatedSingleJob)); // helps us to real time UI update 
                 toast.success(res.data.message);
 
             }
